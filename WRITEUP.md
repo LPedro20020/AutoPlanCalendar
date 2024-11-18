@@ -11,17 +11,17 @@ The application is built using vanilla JavaScript, HTML, and CSS.
 
 ## DEMO
 
-- **LINK**:<https://youtu.be/or3Nj17TzaQ>
+- **LINK**: <https://youtu.be/or3Nj17TzaQ>
 
 ## Inspiration
 
 ### 1. dig.Shovelapp
 
-- **Shovel**:<https://shovelapp.io/>
+- **Shovel**: <https://shovelapp.io/>
 
 ### 2. Calendar on Github
 
-- **opensource-coding/Responsive-Calendar-with-Events**:<https://github.com/opensource-coding/Responsive-Calendar-with-Events>
+- **opensource-coding/Responsive-Calendar-with-Events**: <https://github.com/opensource-coding/Responsive-Calendar-with-Events>
 
 ## Core Components
 
