@@ -9,6 +9,10 @@ AutoPlan is a web-based calendar app that combines traditional calendar function
 
 The application is built using vanilla JavaScript, HTML, and CSS.
 
+## DEMO
+
+- **LINK**:<https://youtu.be/or3Nj17TzaQ>
+
 ## Inspiration
 
 ### 1. dig.Shovelapp
