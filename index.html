@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <title>AutoPlan</title>
+  </head>
+
+  <body>
+    <!-- Main Application Container -->
+    <div class="container">
+      <!-- Left Section: Calendar View -->
+      <div class="left">
+        <!-- Calendar Component Container -->
+        <div class="calendar">
+
+          <!-- View Toggle Buttons -->
+          <button class="view-btn" id="weekly-view">Weekly View</button>
+          <button class="view-btn" id="monthly-view">Monthly View</button>
+
+          <!-- Month Navigation and Display -->
+          <div class="month">
+            <!-- Previous Month Button -->
+            <button class="prev"></button>
+
+            <!-- Current Month/Year Display -->
+            <div class="date">October 2024</div>
+
+            <!-- Next Month Button -->
+            <button class="next"></button>
+          </div>
+
+          <!-- Weekday Headers -->
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+
+          <!-- Calendar Days Grid Container -->
+          <div class="days"></div>
+
+          <!-- Date Navigation Controls -->
+          <div class="goto-today">
+            <div class="goto">
+              <!-- Date Selection Input -->
+              <input type="date" class="date-input" />
+              <!-- Navigation Button -->
+              <button class="goto-btn">Go</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Section: Event and Task Management -->
+      <div class="right">
+        <!-- Date Display Header -->
+        <div class="today-date">
+          <div class="event-day">Mon</div>
+          <div class="event-date">20th October 2024</div>
+          <!-- View Headers -->
+          <h2 class="all-events-heading" style="display: none;">All Events</h2>
+          <h2 class="all-tasks-heading" style="display: none;">All Tasks</h2>
+        </div>
+
+        <!-- Dynamic Content Containers -->
+        <div class="events"></div>
+        <div class="tasks"></div>
+        
+        <!-- Today's Schedule View -->
+        <div class="today-container">
+          <div class="schedule-container">
+            <h3>Schedule</h3>
+            <div class="schedule"></div>
+          </div>
+        </div>
+
+        <!-- Navigation and Control Buttons -->
+        <div class="button-container">
+          <button class="view-events-btn">View All Events</button>
+          <button class="view-tasks-btn">View All Tasks</button>
+          <button class="today-btn">Today</button>
+          <button class="settings-btn">Settings</button>
+        </div>
+
+        <!-- Action Buttons Footer -->
+        <div class="right-footer">
+          <button class="add-event">Add Event</button>
+          <button class="add-task">Add Task</button>
+        </div>
+
+        <!-- Add Event Form -->
+        <div class="add-event-wrapper">
+          <div class="add-event-header">
+            <div class="title">Add Event</div>
+          </div>
+
+          <!-- Form Body -->
+          <div class="add-event-body">
+            <div class="add-event-input">
+              <input type="text" placeholder="Enter Name" class="event-name" />
+            </div>
+
+            <div class="add-event-input">
+              <input type="date" placeholder="Select event date" class="event-date-input" />
+            </div>
+
+            <div class="add-event-input time-inputs">
+              <input type="time" placeholder="Start time" class="event-time-from" />
+              <span class="time-separator">-</span>
+              <input type="time" placeholder="End time" class="event-time-to" />
+            </div>
+          </div>
+
+          <!-- Form Footer -->
+          <div class="add-event-footer">
+            <button class="add-event-btn">Add Event</button>
+          </div>
+        </div>
+
+        <!-- Add Task Form -->
+        <div class="add-task-wrapper">
+          <div class="add-task-header">
+            <div class="title">Add Task</div>
+            <i class="fas fa-times close"></i>
+          </div>
+
+          <!-- Form Body -->
+          <div class="add-task-body">
+            <div class="add-task-input">
+              <input type="text" id="task-name" placeholder="Task Name" class="task-name" />
+            </div>
+
+            <div class="add-task-input deadline-inputs">
+              <label for="task-dead-date">Due:</label>
+              <div class="deadline-input-group">
+                <input type="date" id="task-dead-date" placeholder="Date" class="task-dead-date" />
+                <input type="time" id="task-dead-time" placeholder="Time" class="task-dead-time" />
+              </div>
+            </div>
+
+            <div class="task-length-input">
+              <label for="task-length">Length:</label>
+              <input class="html-duration-picker" data-duration="01:00:00" id="task-length" data-hide-seconds/>
+            </div>
+
+            <div class="checkbox-inputs">
+              <div class="task-checkbox">
+                <input type="checkbox" id="task-urgent" class="task-urgent" />
+                <label for="task-urgent">Urgent</label>
+              </div>
+              <div class="task-checkbox">
+                <input type="checkbox" id="task-priority" class="task-priority" />
+                <label for="task-priority">High Priority</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Footer -->
+          <div class="add-task-footer">
+            <button class="add-task-btn">Add Task</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Details Popup -->
+    <div class="details-popup" id="details-popup">
+      <div class="popup-content">
+        <!-- Close Button -->
+        <span class="close-popup">&times;</span>
+        
+        <!-- Content Area -->
+        <h3 class="popup-title"></h3>
+        <div class="popup-details"></div>
+        
+        <!-- Task Edit Form -->
+        <div class="edit-task-form" style="display: none;">
+          <div class="edit-task-inputs">
+            <div class="input-group">
+              <label>Due Date:</label>
+              <input type="date" class="edit-task-date">
+            </div>
+            
+            <div class="input-group">
+              <label>Due Time:</label>
+              <input type="time" class="edit-task-time">
+            </div>
+            
+            <div class="input-group">
+              <label>Length:</label>
+              <input type="text" class="edit-task-length">
+            </div>
+            
+            <div class="checkbox-group">
+              <div class="task-checkbox">
+                <input type="checkbox" id="edit-task-urgent" class="edit-task-urgent">
+                <label for="edit-task-urgent">Urgent</label>
+              </div>
+              <div class="task-checkbox">
+                <input type="checkbox" id="edit-task-priority" class="edit-task-priority">
+                <label for="edit-task-priority">High Priority</label>
+              </div>
+            </div>
+          </div>
+          
+          <button class="save-task-btn">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-popup" id="settings-popup">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h3 class="popup-title">Settings</h3>
+        
+        <!-- Settings Options -->
+        <div class="settings-options">
+          <button class="clear-events-btn">Clear All Events</button>
+          <button class="clear-task-events-btn">Clear Task Events</button>
+          <button class="clear-tasks-btn">Clear All Tasks</button>
+          
+          <div class="sleep-time-settings">
+            <label>Sleep Time:</label>
+            <div class="time-input-group">
+              <input type="time" id="sleep-time-start" value="22:00" required>
+              <span>to</span>
+              <input type="time" id="sleep-time-end" value="07:00" required>
+            </div>
+          </div>
+          
+          <button class="schedule-tasks-btn">Schedule!</button>
+          <button class="generate-random-tasks-btn">Generate 10 Random Tasks</button>
+          <button class="generate-random-events-btn">Generate 10 Random Events</button>
+          <button class="view-done-tasks-btn">View Done Tasks</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <!-- An Entire File for One Element(Credit in File) -->
+    <script src="js/html-duration-picker.min.js"></script>
+  </body>
+</html>
